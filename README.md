@@ -6,6 +6,9 @@ Custom Node.js OAuth2 Server
 ## Description
 A custom built (put together really) OAuth 2 server for node.js applications, primailly used and tested with [passport-oauth2](https://github.com/jaredhanson/passport-oauth2)
 
+## Installation
+    $ [npm install](https://www.npmjs.org/doc/cli/npm-install.html)
+
 ## Loud Noises
 I would like to extend to you an invitation to the pants party
 
