@@ -18,6 +18,10 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   model = module.exports;
 
+var chalk = require('chalk');
+
+exports.mongoose = mongoose;
+
 //
 // Schemas definitions
 //
@@ -126,6 +130,27 @@ model.saveRefreshToken = function (token, clientId, expires, userId, callback) {
 
   refreshToken.save(callback);
 };
+
+model.createUser = function (data, cb)
+{
+    console.log("Creating client for %s %s", data.firstname, data.lastname);
+    
+    var m = new OAuthUsersModel(data);
+    
+    m.save(function(err){
+        if(err)
+        {
+            // console.log(chalk.red("ERROR: " + err));
+            cb(err, false);
+        }
+        else
+        {
+            // console.log(chalk.green("User has been created!"));
+            console.log(this);
+            cb(null, this);
+        }
+    });
+}
 
 model.getRefreshToken = function (refreshToken, callback) {
   console.log('in getRefreshToken (refreshToken: ' + refreshToken + ')');
