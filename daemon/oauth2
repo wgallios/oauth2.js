@@ -1,0 +1,152 @@
+#! /bin/bash
+
+# Load the VERBOSE setting and other rcS variables
+. /lib/init/vars.sh
+
+# Define LSB log_* functions.
+# Depend on lsb-base (>= 3.2-14) to ensure that this file is present
+# and status_of_proc is working.
+. /lib/lsb/init-functions
+
+# vars
+DATESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+
+DESC="OAuth2.0 Server"
+NODEJS="/usr/bin/nodejs"
+NAME=oauth2
+PIDFILE="/var/run/$NAME.pid"
+
+LOGDIR="/var/log/$NAME"
+LOGFILE="$LOGDIR/$NAME.log"
+
+CONFIGDIR="/etc/default"
+CONFIG="$NAME"
+
+# checks if log directory exists
+# creates if doesnt exist
+if [ ! -d "$LOGDIR" ]; then
+    mkdir -p "$LOGDIR"
+fi
+
+log ()
+{
+    printf "\n[$NAME $DATESTAMP] $1" >> $LOGFILE
+}
+
+error ()
+{
+    log "ERROR: $1"
+}
+
+    # reads and sets up config
+    if ! test -r $CONFIGDIR/$CONFIG
+    then
+        log "$CONFIGDIR/$CONFIG is not readable!"
+        log_daemon_msg "$CONFIGDIR/$CONFIG is not readable!"
+        log_end_msg 1
+        exit 1
+    fi
+
+    #reads config file
+    source $CONFIGDIR/$CONFIG
+
+
+cdir ()
+{
+    cd "$APP_PATH"
+}
+
+INDEX="${APP_PATH}/${INDEX_FILE}.js"
+
+# starts node daemon
+do_start ()
+{
+    cdir
+    
+    if ! start-stop-daemon \
+        --start \
+        --background \
+        --pidfile $PIDFILE \
+        --user $USER \
+        --exec $NODEJS \
+        --test \
+        > /dev/null
+    then
+        log "$DESC is already running"
+        log_daemon_msg "$DESC is already running"
+        log_end_msg 1
+        exit 1
+    fi
+
+    if start-stop-daemon \
+        --start \
+        --background \
+        --user $USER \
+        --make-pidfile --pidfile $PIDFILE \
+        --exec /bin/bash -- \
+            -c "cd $APP_PATH; exec $NODEJS $INDEX >> $LOGFILE 2>&1"
+
+    then
+        log_daemon_msg "Starting $DESC" $NAME
+        log "Starting $DESC $NAME"
+        log_end_msg 0
+        exit 0
+    else
+        log "Failed to start server"
+        log_warning_msg "Failed to start server"
+        log_end_msg 1
+        exit 1
+    fi
+}
+
+do_stop ()
+{
+    if start-stop-daemon \
+        --stop \
+        --quiet \
+        --pidfile $PIDFILE \
+        --retry=TERM/30/KILL/5 \
+        --exec $NODEJS
+    then
+        rm -f $PIDFILE
+
+        log "Stopped $DESC"
+        log_daemon_msg "Stopped $DESC" $NAME
+        log_end_msg 0
+
+        if [ -n "$1" ] && [ $1 != false ]; then
+            exit 0
+        fi
+
+    else
+        log "Failed to stop $DESC"
+        log_daemon_msg "Failed to stop $DESC"
+        log_end_msg 1
+        exit 1
+    fi
+
+}
+
+case "$1" in
+    start)
+        do_start
+        ;;
+    stop)
+        do_stop
+        ;;
+    restart|force-reload)
+        do_stop false
+        sleep 1
+        do_start
+    ;;
+    status)
+            status_of_proc "$NODEJS" "$NAME" && exit 0 || exit $?
+        ;;
+    *)
+        N=/etc/init.d/$NAME
+        echo "Usage: service $NAME {start|stop|restart|force-reload|status}" >&2
+        exit 3
+    ;;
+esac
+
+exit 0

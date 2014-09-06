@@ -8,6 +8,8 @@ A custom built (put together really) OAuth 2 server for node.js applications, pr
 
 ## Installation
     $ npm install
+    $ sudo cp daemon/oauth2 /etc/init.d/
+    $ sudo cp daemon/default /etc/default/
 
 ## Loud Noises
 I would like to extend to you an invitation to the pants party

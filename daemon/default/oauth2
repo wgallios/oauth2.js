@@ -1,0 +1,8 @@
+
+USER="oauth2"
+
+# Location of application
+APP_PATH="/user/local/lib/node_modules/oauth2.js/"
+
+# index file to execute (do not include .js)
+INDEX_FILE='index'
