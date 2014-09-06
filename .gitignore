@@ -1,2 +1,7 @@
 
 **/*.swp
+node_modules/grunt
+node_modules/grunt-cli
+node_modules/grunt-bump
+node_modules/grunt-service
+node_modules/grunt-contrib-jshint

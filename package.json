@@ -21,6 +21,15 @@
     "url": "https://github.com/CGISolution/oauth2.js/issues"
   },
   "dependencies": {
-    "node-oauth2-server": "~2.2.2"
+    "node-oauth2-server": "~2.2.2",
+    "express": "~4.8.8",
+    "body-parser": "~1.8.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-bump": "0.0.15",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-service": "~0.3.0"
   }
 }
