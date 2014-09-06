@@ -26,7 +26,8 @@
     "body-parser": "~1.8.0",
     "mongoose": "~3.8.15",
     "express-controllers": "~0.2.0",
-    "http": "0.0.0"
+    "http": "0.0.0",
+    "express-controller": "~0.1.5"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
