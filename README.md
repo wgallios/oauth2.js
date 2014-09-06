@@ -11,8 +11,9 @@ A custom built (put together really) OAuth 2 server for node.js applications, pr
     $ git clone git@github.com:CGISolution/oauth2.js.git ~/oauth2.js/
     $ cd ~/oauth2.js/
     $ npm install
+    $ sudo mkdir /etc/oauth2/
     $ cp daemon/oauth2 /etc/init.d/
-    $ cp daemon/default /etc/default/
+    $ cp daemon/oauth2.conf /etc/oauth2/
 
 ## Loud Noises
 I would like to extend to you an invitation to the pants party
