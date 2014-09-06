@@ -10,7 +10,10 @@ module.exports = function (grunt)
                 },
                 src: [
                     'Gruntfile.js',
-                    'index.js'
+                    'index.js',
+                    'controllers/*.js',
+                    'config/*.js',
+                    'models/*.js'
                 ],
             }
         },
