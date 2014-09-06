@@ -1,0 +1,26 @@
+{
+  "name": "oauth2",
+  "version": "0.0.1",
+  "description": "OAuth 2.0 Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CGISolution/oauth2.js.git"
+  },
+  "keywords": [
+    "OAuth",
+    "2.0",
+    "Server"
+  ],
+  "author": "William Gallios <williamgallios@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CGISolution/oauth2.js/issues"
+  },
+  "dependencies": {
+    "node-oauth2-server": "~2.2.2"
+  }
+}
