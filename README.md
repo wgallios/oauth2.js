@@ -7,9 +7,12 @@ Custom Node.js OAuth2 Server
 A custom built (put together really) OAuth 2 server for node.js applications, primailly used and tested with [passport-oauth2](https://github.com/jaredhanson/passport-oauth2)
 
 ## Installation
+    $ mkdir ~/oauth2.js/
+    $ git clone git@github.com:CGISolution/oauth2.js.git ~/oauth2.js/
+    $ cd ~/oauth2.js/
     $ npm install
-    $ sudo cp daemon/oauth2 /etc/init.d/
-    $ sudo cp daemon/default /etc/default/
+    $ cp daemon/oauth2 /etc/init.d/
+    $ cp daemon/default /etc/default/
 
 ## Loud Noises
 I would like to extend to you an invitation to the pants party
