@@ -14,6 +14,9 @@ A custom built (put together really) OAuth 2 server for node.js applications, pr
     $ sudo sh install
 
 
+## Daemon
+```sudo service oauth2 {start|stop|restart|force-reload|status}```
+
 ## Loud Noises
 I would like to extend to you an invitation to the pants party
 
