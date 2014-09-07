@@ -10,7 +10,7 @@
 
 echo "Starting Install Process"
 
-#npm install
+npm install
 
 mkdir /etc/oauth2/
 cp daemon/oauth2 /etc/init.d/

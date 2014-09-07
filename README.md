@@ -10,7 +10,8 @@ A custom built (put together really) OAuth 2 server for node.js applications, pr
 
     $ mkdir ~/oauth2.js/
     $ git clone git@github.com:CGISolution/oauth2.js.git ~/oauth2.js/
-    $ sudo sh install.sh
+    $ sudo chmod +x install
+    $ sudo sh install
 
 
 ## Loud Noises
