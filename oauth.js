@@ -6,11 +6,12 @@ var model = require('./models/mongodb');
 var mongoose = require('./models/mongodb').mongoose;
 var prompt = require('prompt');
 var promise = require('promise');
-var request = require('request');
+var request = require('superagent');
 
-console.log(chalk.yellow.underline(process.argv));
+console.log(chalk.yellow.bold.underline(process.argv));
 
 var config = require('./config/production');
+
 
 var uristring = 'mongodb://' + config.db.user + ':' + config.db.pwd + '@' + config.db.host + '/' + config.db.name;
 
@@ -89,34 +90,27 @@ oauth
             { name: 'password', required: true, hidden: true }
         ], function(err, res){
 
-            request({
-                url: 'http://127.0.0.1:' + config.port + '/oauth/token',
-                method:'post',
-                form: {
-                    grant_type: 'password',
-                    response_type: 'code',
-                    client_id: res.username,
-                }
-                /*,oauth: {*/
-                    //callback: 'http://127.0.0.1',
-                    //consumer_key: res.username,
-                    //consumer_secret: res.password
-                /*}*/
-            }, function (err, res, body) {
-                if (err)
-                {
-                    console.log(err);
-                    process.exit(true);
-                }
+        // var url =  'http://127.0.0.1:' + config.port + '/oauth/authorize?response_type=code&redirect_uri=' + encodeURI('http://127.0.0.1:8803') + '&client_id=' + res.username;
 
-                console.log(body);
-            });
+        var url = 'http://127.0.0.1:' + config.port + '/oauth/token';
 
-            /*
-            model.getUser(res.username, res.password, function(err, data) {
-                console.log(data);
+        console.log(chalk.bold.underline('Url: %s'), url);
+        
+        request
+            .post(url)
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .send({
+                grant_type: 'password',
+                client_id: 'xxx',
+                client_secret: res.password,
+                client_user: res.username,
+                password: res.password
+            })
+            .end(function (res) {
+                console.log(res);
+
+                process.exit(true);
             });
-            */
         });
 
     }

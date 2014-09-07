@@ -150,10 +150,16 @@ model.createUser = function (data, cb)
             cb(null, this);
         }
     });
-}
+};
 
 model.getRefreshToken = function (refreshToken, callback) {
   console.log('in getRefreshToken (refreshToken: ' + refreshToken + ')');
 
   OAuthRefreshTokensModel.findOne({ refreshToken: refreshToken }, callback);
+};
+
+
+model.getAuthCode = function (code, callback)
+{
+
 };

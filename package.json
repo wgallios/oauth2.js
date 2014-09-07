@@ -33,7 +33,7 @@
     "chalk": "~0.5.1",
     "prompt": "~0.2.13",
     "promise": "~5.0.0",
-    "request": "~2.42.0"
+    "superagent": "~0.18.2"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

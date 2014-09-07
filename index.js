@@ -4,13 +4,11 @@ var express = require('express'),
 bodyParser = require('body-parser'),
 http = require('http'),
 mongoose = require('mongoose'),
-// expressControllers = require('express-controller');
 oauthserver = require('node-oauth2-server');
 
 var configFile = 'production';
 var app = express();
 var server = http.createServer(app);
-
 
 app.use(bodyParser.json()); // REQUIRED
 
@@ -28,7 +26,7 @@ mongoose.connect(uristring, function (err, res) {
 
 app.oauth = oauthserver({
     model: require('./models/mongodb.js'),
-    grants: ['password'],
+    grants: ['password', 'auth_code', 'refresh_token', 'authorization_code'],
     debug: true
 });
 
