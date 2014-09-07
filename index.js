@@ -14,7 +14,7 @@ app.use(bodyParser.json()); // REQUIRED
 
 config = require('./config/' + configFile);
 
-var uristring = 'mongodb://' + config.db.user + ':' + config.db.pwd + '@' + config.db.host + '/' + config.db.name;
+var uristring = 'mongodb://' + config.db.user + ':' + config.db.pwd + '@' + config.db.host + ':' + config.db.port + '/' + config.db.name;
 
 mongoose.connect(uristring, function (err, res) {
     if (err)

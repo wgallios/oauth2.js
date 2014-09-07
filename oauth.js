@@ -12,7 +12,6 @@ console.log(chalk.yellow.bold.underline(process.argv));
 
 var config = require('./config/production');
 
-
 var uristring = 'mongodb://' + config.db.user + ':' + config.db.pwd + '@' + config.db.host + '/' + config.db.name;
 
 // function to connection to db

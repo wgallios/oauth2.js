@@ -5,6 +5,7 @@ module.exports = {
         host: 'localhost',
         name: 'oauth2',
         user: 'oauth2',
-        pwd: 'oauth2-password'
+        pwd: 'oauth2-password',
+        port: 27017
     }
 };
