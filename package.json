@@ -32,7 +32,8 @@
     "express-resource": "~1.0.0",
     "chalk": "~0.5.1",
     "prompt": "~0.2.13",
-    "promise": "~5.0.0"
+    "promise": "~5.0.0",
+    "request": "~2.42.0"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
