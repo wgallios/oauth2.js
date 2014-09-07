@@ -55,9 +55,9 @@ process.on('SIGTERM', function () {
 
 });
 
-app.listen(config.port);
+app.listen(config.port, config.ip);
 
-console.log("-----------------------------------");
-console.log("Auth2.0 Server Started on Port 8003");
-console.log("-----------------------------------");
+console.log("\n\n-----------------------------------");
+console.log("Auth2.0 Server Started @ http://" + config.ip + ":" + config.port);
+console.log("-----------------------------------\n\n");
 

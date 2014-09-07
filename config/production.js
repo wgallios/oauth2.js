@@ -1,5 +1,6 @@
 
 module.exports = {
+    ip: '127.0.0.1',
     port: 8803,
     db: {
         host: 'localhost',
