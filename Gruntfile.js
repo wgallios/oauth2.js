@@ -59,7 +59,6 @@ module.exports = function (grunt)
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-service');
 
-    // not currently linting less/css with recess
     grunt.registerTask('default', 'Running default build', function (cmd){
 
         grunt.task.run('jshint:all');
