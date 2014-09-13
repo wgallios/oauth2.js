@@ -2,7 +2,7 @@
   "name": "oauth2",
   "version": "0.0.2",
   "description": "OAuth 2.0 Server",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "test.js"
   },
@@ -25,16 +25,15 @@
     "express": "~4.8.8",
     "body-parser": "~1.8.0",
     "mongoose": "~3.8.15",
-    "express-controllers": "~0.2.0",
     "http": "0.0.0",
-    "express-controller": "~0.1.5",
     "commander": "~2.3.0",
     "express-resource": "~1.0.0",
     "chalk": "~0.5.1",
     "prompt": "~0.2.13",
     "promise": "~5.0.0",
     "superagent": "~0.18.2",
-    "log": "~1.4.0"
+    "log": "~1.4.0",
+    "bcrypt-nodejs": "0.0.3"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

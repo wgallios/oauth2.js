@@ -8,7 +8,9 @@ oauthserver = require('node-oauth2-server');
 
 var chalk = require('chalk');
 var configFile = 'production';
-var log = require('log');
+
+var Log = require('log');
+var log = new Log('info');
 
 var app = express();
 var server = http.createServer(app);
@@ -21,9 +23,9 @@ var uristring = 'mongodb://' + config.db.user + ':' + config.db.pwd + '@' + conf
 
 mongoose.connect(uristring, function (err, res) {
     if (err)
-        console.log("Error Connecting to " + uristring + ". " + err);
+        log.error("Error Connecting to " + uristring + ". " + err);
     else
-        console.log("Successfully connected to " + config.db.name + '!');
+        log.info("Successfully connected to " + config.db.name + '!');
 });
 
 

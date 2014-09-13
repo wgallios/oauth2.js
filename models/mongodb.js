@@ -146,7 +146,6 @@ model.createUser = function (data, cb)
         else
         {
             // console.log(chalk.green("User has been created!"));
-            console.log(this);
             cb(null, this);
         }
     });
