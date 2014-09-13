@@ -8,6 +8,8 @@ oauthserver = require('node-oauth2-server');
 
 var chalk = require('chalk');
 var configFile = 'production';
+var log = require('log');
+
 var app = express();
 var server = http.createServer(app);
 
@@ -59,6 +61,6 @@ process.on('SIGTERM', function () {
 app.listen(config.port, config.ip);
 
 console.log(chalk.bold.underline("\n\n-----------------------------------"));
-console.log(chalk.bold.underline("Auth2.0 Server Started @ http://%s:%s"), config.ip,  config.port);
+console.log(chalk.bold.underline("OAuth2.0 Server Started @ http://%s:%s"), config.ip,  config.port);
 console.log(chalk.bold.underline("-----------------------------------\n\n"));
 

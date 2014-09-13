@@ -6,7 +6,8 @@ module.exports = function (grunt)
             all:
             {
                 options: {
-                    'noempty': true
+                    'noempty': true,
+                    reporter: require('jshint-stylish')
                 },
                 src: [
                     'Gruntfile.js',
